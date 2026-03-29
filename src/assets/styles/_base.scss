@@ -1,0 +1,84 @@
+@use "variables";
+
+/* =========================================================
+  RESTAUREM VALORS
+========================================================= */
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+  ESTIL LLISTES
+========================================================= */
+  ul {
+    list-style: none;
+  }
+
+/* =========================================================
+  ESTIL SUBTÍTOLS
+========================================================= */
+
+  h2 {
+    color: variables.$color-verdFosc;
+    border-bottom: 1px solid rgba(variables.$color-verdClaret, 0.3);
+    padding-bottom: 5px;
+  }
+
+  h3 {
+    color: variables.$color-verdClaret;
+    border-bottom: 1px solid rgba(variables.$color-verdClaret, 0.3);
+    padding-bottom: 5px;
+    font-family: 'Special Elite', cursive;
+  }
+
+
+/* =========================================================
+  ESTIL TEXT 
+========================================================= */
+
+.text {
+  margin-top: 10px;
+  line-height: 1.3;
+  font-family: 'Noto Sans Sunuwar', sans-serif;
+  margin-bottom: 45px;
+  color: variables.$color-verdFosc;          
+}
+
+/* =========================================================
+  BASE TARGETA RUTA 
+========================================================= */
+
+.targeta {
+  margin: 20px;
+  background-color:white; 
+  border-radius: 2rem;
+  max-width: 800px;
+  padding: 2rem;
+  box-shadow:// Sombra para dar efecto de tarjeta elevada
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-family: 'Special Elite', cursive;
+}
+
+@media (min-width: variables.$mqMinWidthDesktop) {
+  .targeta{
+  margin:  auto; 
+ } 
+}
+
+/* =========================================================
+  FONS NÚVOLS
+========================================================= */
+
+main {
+  background-image: url('../images/cel2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px 0; // IMPORTANT perquè es veja el fons dalt i baix
+}
