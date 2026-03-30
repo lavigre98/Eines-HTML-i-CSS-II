@@ -1,29 +1,48 @@
 /**
- * Use this file to import partials.
- * Do not include SCSS code in this file.
+ * MAIN STYLESHEET - SMACSS Architecture
+ * Seguint l'organització en cinc categories: Base, Layout, Module, State i Theme.
  */
-
- /**
- * Import variables FIRST
- * Això permet que la resta de fitxers puguin usar els teus colors i funcions
- */
-@use "variables";
 
 /**
- * Import dependencies
+ * 1. CONFIGURACIÓ I DEPENDÈNCIES
+ * Importem primer les variables i llibreries externes perquè estiguin 
+ * disponibles per a la resta de categories.
  */
+@use "variables";
 @use "dependencies";
 
 /**
- * Import layouts
- * It's a best practice to use a different partial for each page
+ * 2. BASE RULES
+ * Estils per defecte d'etiquetes HTML (resets, tipografies base).
  */
-
-@use "layouts/home";
+@use "base";
 
 /**
- * Do NOT include anything else in this file!
+ * 3. LAYOUT RULES
+ * Estructures principals de la pàgina (header, footer, graelles).
+ * El que tenies a "layouts/home" (header i footer) pertany aquí [5, 6].
  */
+@use "layouts/home"; 
+
+/**
+ * 4. MODULE RULES
+ * Components reutilitzables (com les teves classes .targeta o .galeria).
+ * Es recomana moure aquests estils de 'base' o 'home' a fitxers de mòduls separats.
+ */
+@use "modules/cards";
+@use "modules/gallery";
+@use "modules/breadcrumbs"; 
+@use "modules/typography";
 
 
-@use "base";
+/**
+ * 5. STATE RULES
+ * Estats canviants dels elements (per exemple: .is-active, .is-hidden).
+ */
+// @use "state";
+
+/**
+ * 6. THEME RULES
+ * Regles visuals específiques (colors de marca, temes foscos, etc.).
+ */
+// @use "theme";

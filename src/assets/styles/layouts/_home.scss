@@ -1,88 +1,54 @@
-// Importem les variables definides en l'arxiu "../variables"
 @use "sass:color";
 @use "../variables";
 
-
 /* =========================================================
-  HEADER
+  LAYOUT: ESTRUCTURA PRINCIPAL
 ========================================================= */
 
-header{
-  background-color: variables.$color-verdFosc; 
-  padding: 20px 20px 20px 40px; //ordre top right bottom left
+// El fons de la pàgina defineix l'estructura visual global
+main {
+  background-image: url('../images/cel2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px 0; 
 }
 
-header > p{   
+/* HEADER */
+header {
+  background-color: variables.$color-verdFosc; 
+}
+
+header > h1 {
+  color: variables.$color-clar;
+  font-size: 3rem;
+  font-family: 'Beth Ellen', cursive;
+  padding: 20px 20px 20px 40px;
+
+  i { 
+    margin-right: 15px;
+    color: color.adjust(variables.$color-verdClaret, $lightness: 10%);
+  }
+}
+
+header > p {   
   color: variables.$color-clar;
   font-size: 20px;
   font-weight: 700;
   line-height: 30px;
   font-family: 'Noto Sans Sunuwar', sans-serif;
-  padding-top: 15px;
   border-top: 1px solid rgba(variables.$color-verdClaret, 0.3);
+  padding: 20px 20px 20px 40px;
 }
 
- header > h1 {
-    color: variables.$color-clar;
-    font-size: 3rem;
-    font-family: 'Beth Ellen', cursive;
 
-    i { // Nesting per a la icona de FontAwesome
-      margin-right: 15px;
-      color: color.adjust(variables.$color-verdClaret, $lightness: 10%);
-      //color: darken(variables.$color-verdClaret, 10%); // Funció nativa de Sass
-    }
-  }
-
-
-/* =========================================================
-  SECCIÓ TRACK
-========================================================= */
-
-.imatge-track img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  margin-bottom: 20px;
-  margin-top: 10px;
-}
-
-/* =========================================================
-  SECCIÓ GALERIA
-========================================================= */
-
-@media (min-width: variables.$mqMinWidthDesktop) {
-
-.galeria {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-}
-
-  .galeria img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-}
-
-  .galeria{
-    margin-top: 10px;
-  }
-
-/* =========================================================
-  FOOTER
-========================================================= */
-
+/* FOOTER */
 .footer {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding: 1.5rem 0;
   font-size: 0.75rem;
   font-weight: 500;
   text-align: center;
-  color: white;
+  color: variables.$color-clar;
   background-color: variables.$color-verdFosc;
   font-family: 'Noto Sans Sunuwar', sans-serif;
-
 }
-

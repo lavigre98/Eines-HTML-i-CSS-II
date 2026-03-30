@@ -1,0 +1,13 @@
+@use "../variables";
+
+/* =========================================================
+  MODULES: COMPONENTS REUTILITZABLES
+========================================================= */
+/* MÒDUL TEXT */
+.text {
+  margin-top: 10px;
+  line-height: 1.3;
+  font-family: 'Noto Sans Sunuwar', sans-serif;
+  margin-bottom: 45px;
+  color: variables.$color-verdFosc;          
+}

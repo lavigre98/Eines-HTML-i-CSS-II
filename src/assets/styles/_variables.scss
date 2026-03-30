@@ -17,14 +17,6 @@ $font-family-serif:
   "Times New Roman", // Font clàssica
   serif; // Tipus genèric serif
 
-$uoc-corporate: #000078; // Color corporatiu principal (blau fosc)
-
-$uoc-masterbrand: #73edff; // Color principal de marca (blau clar)
-
-$uoc-bg: color.scale($uoc-masterbrand, $lightness: 70%); 
-// Agafa el color de marca i li augmenta la lluminositat un 70%
-// → resultat: un color més clar, ideal per a fons
-
 $mqMinWidth: 420px; // Amplada responsive
 $mqMinWidthDesktop: 992px; // Amplada responsive
 
@@ -33,3 +25,8 @@ $color-clar: #F9F2E4;
 $color-verdClaret: #9FBF5A;
 $color-verdFosc: #30645a;
 $color-marro: #a56953;
+$color-groc: #FFEA00;
+
+
+// Definim una unitat base d'espaiat
+$base-spacing: 8px;
