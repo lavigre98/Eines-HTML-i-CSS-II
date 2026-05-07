@@ -1,3 +1,10 @@
+@use 'bootstrap/scss/bootstrap';
+@use '@fortawesome/fontawesome-free/scss/fontawesome';
+@use '@fortawesome/fontawesome-free/scss/solid';
+@use '@fortawesome/fontawesome-free/scss/brands';
+@use '@fontsource/playfair-display';
+@use '@fontsource/source-sans-3';
+
 /* =============================================================
 // main.scss — Jornades d'Artesania · PAC2
 // Punt d'entrada principal dels estils
@@ -23,19 +30,19 @@
 // aquest ordre independentment de l'ordre d'importació dels parcials.
 @layer reset, base, layout, components, utilities, pages;
 
-@import 'abstracts/variables';
+@use 'abstracts/variables';
 
-@import 'base/reset';
-@import 'base/base';
+@use 'base/reset';
+@use 'base/base';
 
-@import 'layout/navbar';
-@import 'layout/footer';
+@use 'layout/navbar';
+@use 'layout/footer';
 
-@import 'components/components';
-@import 'components/utilities';
+@use 'components/components';
+@use 'components/utilities';
 
-@import 'pages/page-home';
-@import 'pages/page-speakers';
-@import 'pages/page-article';
-@import 'pages/page-contact';
-@import 'pages/responsive';
+@use 'pages/page-home';
+@use 'pages/page-speakers';
+@use 'pages/page-article';
+@use 'pages/page-contact';
+@use 'pages/responsive';
