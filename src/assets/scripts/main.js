@@ -1,5 +1,10 @@
 import 'bootstrap';
+import '@fortawesome/fontawesome-free/css/all.css';
 
+import '@fontsource/playfair-display/400.css';
+import '@fontsource/playfair-display/700.css';
+import '@fontsource/source-sans-3/400.css';
+import '@fontsource/source-sans-3/700.css';
 /**
  * Import dependencies from node_modules
  */

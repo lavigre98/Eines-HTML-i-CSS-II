@@ -1,11 +1,23 @@
 @use 'bootstrap/scss/bootstrap';
-@use '@fortawesome/fontawesome-free/scss/fontawesome';
-@use '@fortawesome/fontawesome-free/scss/solid';
-@use '@fortawesome/fontawesome-free/scss/brands';
-@use '@fontsource/playfair-display';
-@use '@fontsource/source-sans-3';
 
-/* =============================================================
+@use 'abstracts/variables';
+
+@use 'base/reset';
+@use 'base/base';
+
+@use 'layout/navbar';
+@use 'layout/footer';
+
+@use 'components/components';
+@use 'components/utilities';
+
+@use 'pages/page-home';
+@use 'pages/page-speakers';
+@use 'pages/page-article';
+@use 'pages/page-contact';
+@use 'pages/responsive';
+
+// =============================================================
 // main.scss — Jornades d'Artesania · PAC2
 // Punt d'entrada principal dels estils
 // =============================================================
@@ -28,21 +40,6 @@
 // --- 1. Ordre de les capes de cascada ---
 // Cal declarar-les primer perquè la resta de @layer respectin sempre
 // aquest ordre independentment de l'ordre d'importació dels parcials.
+
 @layer reset, base, layout, components, utilities, pages;
 
-@use 'abstracts/variables';
-
-@use 'base/reset';
-@use 'base/base';
-
-@use 'layout/navbar';
-@use 'layout/footer';
-
-@use 'components/components';
-@use 'components/utilities';
-
-@use 'pages/page-home';
-@use 'pages/page-speakers';
-@use 'pages/page-article';
-@use 'pages/page-contact';
-@use 'pages/responsive';
