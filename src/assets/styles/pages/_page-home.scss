@@ -1,0 +1,275 @@
+// =============================================================
+// _page-home.scss
+// Pàgina de portada: maquetació CSS Grid en format poster
+// @supports proporciona fallback flex per a navegadors sense Grid
+// Noves unitats: dvh (dynamic viewport height)
+// =============================================================
+
+@layer pages {
+  .poster-main {
+    // dvh — dynamic viewport height: descompta les barres del navegador mòbil
+    min-height: calc(100dvh - 64px);
+    background-color: var(--color-bg-alt);
+    padding: var(--space-md);
+    display: flex;
+    align-items: stretch;
+  }
+
+  // --- Fallback flex per a navegadors sense CSS Grid ---
+  .poster-grid {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    background-color: var(--color-bg-alt);
+  }
+
+  .poster-cell {
+    flex: 1 1 200px;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    overflow: hidden;
+  }
+
+  // --- CSS Grid: millora progressiva amb @supports ---
+  @supports (display: grid) {
+    .poster-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      gap: var(--space-sm);
+      width: 100%;
+    }
+
+    .poster-title      { grid-column: 1 / 8;   grid-row: 1; }
+    .poster-date       { grid-column: 8 / 10;  grid-row: 1; }
+    .poster-badge      { grid-column: 10 / 13; grid-row: 1; }
+    .poster-image      { grid-column: 1 / 6;   grid-row: 2; }
+    .poster-tagline    { grid-column: 6 / 10;  grid-row: 2; }
+    .poster-location   { grid-column: 10 / 13; grid-row: 2; }
+    .poster-links      { grid-column: 1 / 8;   grid-row: 3; }
+    .poster-decoration { grid-column: 8 / 13;  grid-row: 3; }
+  }
+
+  // --- Cel·les de la graella ---
+  .poster-title {
+    background-color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-md);
+  }
+
+  .poster-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1;
+    color: var(--color-white);
+    margin-bottom: 0.5rem;
+
+    &__line1,
+    &__line2 {
+      display: block;
+    }
+
+    &__line2 {
+      color: var(--color-accent);
+    }
+  }
+
+  .poster-edition {
+    color: var(--color-accent-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .poster-image {
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--color-accent-light);
+    min-height: 220px;
+
+    &__inner {
+      width: 100%;
+      height: 100%;
+
+      svg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .poster-date {
+    background-color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    &__label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-primary);
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    &__value {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900;
+      color: var(--color-primary);
+      line-height: 1;
+      margin: 0;
+    }
+
+    &__year {
+      font-size: 1rem;
+      color: var(--color-primary-light);
+      margin: 0;
+    }
+  }
+
+  .poster-location {
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--space-sm);
+
+    &__content {
+      text-align: center;
+
+      i {
+        font-size: 2rem;
+        color: var(--color-accent);
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      p {
+        font-weight: 600;
+        color: var(--color-primary);
+        font-size: 0.95rem;
+        margin: 0;
+      }
+    }
+  }
+
+  .poster-tagline {
+    background-color: var(--color-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .poster-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    color: var(--color-primary);
+    text-align: center;
+    line-height: 1.4;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .poster-links {
+    background-color: var(--color-primary-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-sm);
+
+    &__title {
+      color: var(--color-accent-light);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+
+  .poster-nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .poster-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-white);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    font-size: 0.9rem;
+
+    &:hover {
+      background-color: var(--color-white);
+      color: var(--color-primary);
+    }
+  }
+
+  .poster-decoration {
+    background-color: var(--color-accent-light);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .poster-deco-pattern {
+    width: 100%;
+    height: 100%;
+    min-height: 80px;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(139, 94, 60, 0.15) 10px,
+      rgba(139, 94, 60, 0.15) 20px
+    );
+  }
+
+  .poster-badge {
+    background-color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__inner {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__text {
+      color: var(--color-white);
+      font-weight: 700;
+      text-align: center;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.3;
+      margin: 0;
+    }
+  }
+}

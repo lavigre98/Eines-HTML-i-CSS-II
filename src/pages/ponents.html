@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ponents – Jornades d'Artesania</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles/main.css" />
+</head>
+<body class="page-speakers">
+
+<include src="../partials/_navbar.html"></include>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <h1 class="page-header__title">Ponents</h1>
+      <p class="page-header__subtitle">Coneix les persones que compartiran el seu saber</p>
+    </div>
+  </header>
+
+  <!-- SPEAKERS SECTION - Flex layout (no Bootstrap row/col-*) -->
+  <main class="speakers-main">
+    <div class="container">
+      <div class="speakers-container">
+
+        <!-- Speaker 1 -->
+        <article class="speaker-card">
+          <div class="speaker-card__img-wrap">
+            <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="200" height="180" fill="#f0e8da"/>
+              <circle cx="100" cy="65" r="38" fill="#c9a96e" opacity="0.7"/>
+              <path d="M40 180 Q100 130 160 180" fill="#8b5e3c" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="speaker-card__body">
+            <h2 class="speaker-card__name">Anna Puig</h2>
+            <p class="speaker-card__desc">Ceramista i docent, fundadora del Taller de la Terra, amb 20 anys d'experiència en ceràmica funcional i artística.</p>
+            <div class="speaker-card__tags">
+              <span class="badge-tag">Ceràmica</span>
+              <span class="badge-tag">Taller</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Speaker 2 -->
+        <article class="speaker-card">
+          <div class="speaker-card__img-wrap">
+            <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="200" height="180" fill="#e8f0e8"/>
+              <circle cx="100" cy="65" r="38" fill="#7aaa7a" opacity="0.6"/>
+              <path d="M40 180 Q100 130 160 180" fill="#3d7a3d" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="speaker-card__body">
+            <h2 class="speaker-card__name">Marc Torrens</h2>
+            <p class="speaker-card__desc">Expert en teixits tradicionals catalans i professor al Museu Tèxtil, especialitzat en tècniques de teixit antic.</p>
+            <div class="speaker-card__tags">
+              <span class="badge-tag">Tèxtil</span>
+              <span class="badge-tag">Història</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Speaker 3 -->
+        <article class="speaker-card">
+          <div class="speaker-card__img-wrap">
+            <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="200" height="180" fill="#e8eaf0"/>
+              <circle cx="100" cy="65" r="38" fill="#7a8acc" opacity="0.6"/>
+              <path d="M40 180 Q100 130 160 180" fill="#3d4d8a" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="speaker-card__body">
+            <h2 class="speaker-card__name">Lídia Mas</h2>
+            <p class="speaker-card__desc">Restauradora de mobles i fusteria artística, autora del llibre <em>Fusta Viva</em> sobre tradicions de la fusteria catalana.</p>
+            <div class="speaker-card__tags">
+              <span class="badge-tag">Fusteria</span>
+              <span class="badge-tag">Restauració</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Speaker 4 -->
+        <article class="speaker-card">
+          <div class="speaker-card__img-wrap">
+            <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="200" height="180" fill="#f0e8ee"/>
+              <circle cx="100" cy="65" r="38" fill="#cc7aa8" opacity="0.6"/>
+              <path d="M40 180 Q100 130 160 180" fill="#8a3d6e" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="speaker-card__body">
+            <h2 class="speaker-card__name">Jordi Balcells</h2>
+            <p class="speaker-card__desc">Mestre vidrier i artista, guardonat amb el Premi Nacional d'Artesania 2024 per la seva obra en vitrall contemporani.</p>
+            <div class="speaker-card__tags">
+              <span class="badge-tag">Vidre</span>
+              <span class="badge-tag">Vitrall</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Speaker 5 -->
+        <article class="speaker-card">
+          <div class="speaker-card__img-wrap">
+            <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="200" height="180" fill="#f0f0e8"/>
+              <circle cx="100" cy="65" r="38" fill="#aaaa7a" opacity="0.6"/>
+              <path d="M40 180 Q100 130 160 180" fill="#6a6a3d" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="speaker-card__body">
+            <h2 class="speaker-card__name">Sònia Vidal</h2>
+            <p class="speaker-card__desc">Joiera i escultora en metall, combina tècniques ancestrals de forja amb materials reciclats en les seves creacions úniques.</p>
+            <div class="speaker-card__tags">
+              <span class="badge-tag">Joieria</span>
+              <span class="badge-tag">Forja</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Speaker 6 -->
+        <article class="speaker-card">
+          <div class="speaker-card__img-wrap">
+            <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="200" height="180" fill="#ebe8f0"/>
+              <circle cx="100" cy="65" r="38" fill="#9a7acc" opacity="0.6"/>
+              <path d="M40 180 Q100 130 160 180" fill="#5d3d8a" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="speaker-card__body">
+            <h2 class="speaker-card__name">Pere Fontanilles</h2>
+            <p class="speaker-card__desc">Investigador i promotor de les arts i els oficis, director de la Fundació Arrels per a la preservació del patrimoni artesà.</p>
+            <div class="speaker-card__tags">
+              <span class="badge-tag">Patrimoni</span>
+              <span class="badge-tag">Recerca</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Bootstrap Alert component -->
+      <div class="alert alert-craft mt-5 text-center" role="alert">
+        <i class="fa-solid fa-circle-info me-2"></i>
+        Si vols proposar un ponent addicional, posa't en contacte amb l'organització a través de la <a href="contacte.html" class="alert-link">pàgina de contacte</a>.
+      </div>
+    </div>
+  </main>
+
+  <include src="../partials/_footer.html"></include>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/scripts/main.js"></script>
+</body>
+</html>

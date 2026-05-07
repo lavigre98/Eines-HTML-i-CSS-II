@@ -1,0 +1,48 @@
+// =============================================================
+// _navbar.scss
+// Barra de navegació superior (Bootstrap navbar customitzada)
+// =============================================================
+
+@layer components {
+  .navbar-custom {
+    background-color: var(--color-primary);
+    padding: 0.875rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-accent-light) !important;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+
+    i {
+      color: var(--color-accent);
+    }
+  }
+
+  .navbar-custom .nav-link {
+    color: var(--color-accent-light) !important;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+    padding: 0.5rem 0.75rem !important;
+    border-radius: var(--radius-sm);
+
+    &:hover,
+    &.active {
+      color: var(--color-white) !important;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}

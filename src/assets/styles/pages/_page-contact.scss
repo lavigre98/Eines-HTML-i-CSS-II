@@ -1,0 +1,205 @@
+// =============================================================
+// _page-contact.scss
+// Pàgina de contacte: formulari + info cards
+// Noves unitats: dvh, svh, cqi (container query length units)
+// Noves funcions de color: oklch()
+// Container queries per a info-cards i footer
+// =============================================================
+
+@layer pages {
+  // Capçalera amb color oklch
+  .page-header--contact {
+    background-color: var(--color-oklch-primary);
+  }
+
+  // Main: dvh per a altura mínima dinàmica
+  .contact-main {
+    min-height: 60dvh;
+    padding: var(--space-lg) 0;
+    background-color: var(--color-oklch-bg);
+  }
+
+  // --- Layout principal ---
+  .contact-layout {
+    display: flex;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  // --- Targetes d'informació ---
+  .contact-info {
+    flex: 0 1 300px;
+    container-type: inline-size;
+    container-name: contact-info;
+  }
+
+  .info-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--color-border);
+    container-type: inline-size;
+    container-name: info-card;
+
+    &__icon {
+      flex-shrink: 0;
+      // cqi — container query inline units: mida relativa al contenidor, no al viewport
+      width: clamp(2rem, 10cqi, 3rem);
+      height: clamp(2rem, 10cqi, 3rem);
+      background-color: var(--color-accent-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-oklch-primary);
+      font-size: 1rem;
+    }
+
+    &__content {
+      h3 {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--color-text-muted);
+        margin-bottom: 0.25rem;
+        font-family: var(--font-body);
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 0.9rem;
+        margin: 0;
+        color: var(--color-primary);
+        line-height: 1.5;
+      }
+
+      a {
+        color: var(--color-primary-light);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // Container query: en contenidor molt estret, apila icona i text
+  @container contact-info (max-width: 260px) {
+    .info-card {
+      flex-direction: column;
+      gap: 0.5rem;
+
+      &__icon {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+
+  // --- Formulari ---
+  .contact-form-section {
+    flex: 1 1 380px;
+
+    h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      margin-bottom: var(--space-sm);
+      color: var(--color-oklch-primary);
+    }
+  }
+
+  .contact-form-wrap {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+
+    // :has() — si l'input dins té error visible, posa l'etiqueta en vermell
+    &:has(input:invalid:not(:placeholder-shown)) .form-label {
+      color: #c0392b;
+    }
+  }
+
+  .form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .required {
+    color: var(--color-oklch-accent);
+  }
+
+  // :is() — estils compartits per a inputs i selects
+  :is(.form-control, .form-select) {
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.85rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    width: 100%;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.2);
+    }
+  }
+
+  textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  // --- Mapa placeholder ---
+  .map-placeholder {
+    background-color: var(--color-bg-alt);
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--color-border);
+    // svh — small viewport height: usa la mida mínima del viewport (útil en mobile)
+    min-height: 20svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__inner {
+      text-align: center;
+      padding: var(--space-md);
+
+      i {
+        font-size: 3rem;
+        color: var(--color-accent);
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      p {
+        color: var(--color-primary);
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

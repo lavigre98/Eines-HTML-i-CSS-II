@@ -1,0 +1,130 @@
+// =============================================================
+// _page-speakers.scss
+// Pàgina de ponents: capçalera de pàgina i retícula flex de speaker cards
+// Flex layout propi (sense .row/.col-* de Bootstrap)
+// Container queries per a les cards individuals
+// :has() per a cards que contenen SVG
+// =============================================================
+
+@layer layout {
+  // --- Capçalera de pàgina (compartida amb article) ---
+  .page-header {
+    background-color: var(--color-primary);
+    padding: var(--space-lg) 0 var(--space-md);
+    text-align: center;
+
+    &__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--color-white);
+      margin-bottom: 0.5rem;
+    }
+
+    &__subtitle {
+      color: var(--color-accent-light);
+      font-size: 1.05rem;
+      margin: 0;
+    }
+  }
+
+  // --- Secció principal ---
+  .speakers-main {
+    padding: var(--space-lg) 0;
+  }
+
+  // --- Retícula Flex (NO Bootstrap row/col-*) ---
+  .speakers-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    justify-content: center;
+  }
+
+  // --- Speaker Card ---
+  .speaker-card {
+    // Context de contenidor per a container queries internes
+    container-type: inline-size;
+    container-name: speaker-card;
+
+    flex: 0 1 calc(33.333% - var(--space-md));
+    min-width: 260px;
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: transform var(--transition-med), box-shadow var(--transition-med);
+    border: 1px solid var(--color-border);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    // :has() — si la card conté un SVG, afegeix overlay gradient a la imatge
+    &:has(svg) .speaker-card__img-wrap {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: linear-gradient(transparent, var(--color-white));
+      }
+    }
+
+    &__img-wrap {
+      width: 100%;
+      height: 160px;
+      overflow: hidden;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__body {
+      padding: var(--space-md);
+    }
+
+    &__name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    &__desc {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    &__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+    }
+  }
+
+  // Container query: si la card és molt estreta, redueix tipografia
+  @container speaker-card (max-width: 280px) {
+    .speaker-card__name { font-size: 1.1rem; }
+    .speaker-card__desc { font-size: 0.82rem; }
+  }
+
+  // --- Badge de categoria ---
+  .badge-tag {
+    background-color: var(--color-accent-light);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.04em;
+  }
+}

@@ -1,0 +1,83 @@
+// =============================================================
+// _responsive.scss
+// Media queries globals: tablet (≤768px) i mòbil (≤480px)
+// Inclou @supports dins de media queries per a la portada Grid
+// =============================================================
+
+@layer layout {
+  // --- Tablet ---
+  @media (max-width: 768px) {
+    .poster-main {
+      padding: var(--space-sm);
+      min-height: auto;
+    }
+
+    @supports (display: grid) {
+      .poster-grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: auto;
+      }
+
+      .poster-title      { grid-column: 1 / 7; grid-row: 1; }
+      .poster-date       { grid-column: 1 / 4; grid-row: 2; }
+      .poster-badge      { grid-column: 4 / 7; grid-row: 2; }
+      .poster-image      { grid-column: 1 / 7; grid-row: 3; }
+      .poster-tagline    { grid-column: 1 / 7; grid-row: 4; }
+      .poster-location   { grid-column: 1 / 4; grid-row: 5; }
+      .poster-links      { grid-column: 4 / 7; grid-row: 5; }
+      .poster-decoration { display: none; }
+    }
+
+    .speakers-container {
+      justify-content: center;
+    }
+
+    .speaker-card {
+      flex: 0 1 calc(50% - var(--space-md));
+    }
+
+    .article-two-col {
+      flex-direction: column;
+    }
+
+    .contact-layout {
+      flex-direction: column;
+    }
+
+    .contact-info {
+      flex: 0 1 100%;
+    }
+  }
+
+  // --- Mòbil ---
+  @media (max-width: 480px) {
+    @supports (display: grid) {
+      .poster-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .poster-title,
+      .poster-date,
+      .poster-badge,
+      .poster-image,
+      .poster-tagline,
+      .poster-location,
+      .poster-links {
+        grid-column: 1;
+      }
+    }
+
+    .speaker-card {
+      flex: 0 1 100%;
+    }
+
+    .poster-nav-links {
+      flex-direction: column;
+    }
+
+    .article-figure--wide {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}

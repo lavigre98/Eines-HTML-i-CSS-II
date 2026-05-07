@@ -1,48 +1,41 @@
-/**
- * MAIN STYLESHEET - SMACSS Architecture
- * Seguint l'organització en cinc categories: Base, Layout, Module, State i Theme.
- */
+/* =============================================================
+// main.scss — Jornades d'Artesania · PAC2
+// Punt d'entrada principal dels estils
+// =============================================================
+// Estructura de parcials:
+//
+//  _variables.scss    → Tokens de disseny (colors, fonts, espais...)
+//  _reset.scss        → Reset de marges, box-sizing, elements bàsics
+//  _base.scss         → Estils globals: body, tipografia, :is(), :where()
+//  _navbar.scss       → Barra de navegació (Bootstrap customitzada)
+//  _footer.scss       → Footer comú + container query
+//  _components.scss   → Components Bootstrap: botons, alerts, modal, dropdown
+//  _utilities.scss    → Classes utilitàries pròpies
+//  _page-home.scss    → Portada: CSS Grid poster + @supports fallback + dvh
+//  _page-speakers.scss→ Ponents: Flex layout + container queries + :has()
+//  _page-article.scss → Article: :has(), :is(), :where() + container queries
+//  _page-contact.scss → Contacte: noves unitats (dvh/svh/cqi) + oklch()
+//  _responsive.scss   → Media queries globals (tablet i mòbil)
+// =============================================================
 
-/**
- * 1. CONFIGURACIÓ I DEPENDÈNCIES
- * Importem primer les variables i llibreries externes perquè estiguin 
- * disponibles per a la resta de categories.
- */
-@use "variables";
-@use "dependencies";
+// --- 1. Ordre de les capes de cascada ---
+// Cal declarar-les primer perquè la resta de @layer respectin sempre
+// aquest ordre independentment de l'ordre d'importació dels parcials.
+@layer reset, base, layout, components, utilities, pages;
 
-/**
- * 2. BASE RULES
- * Estils per defecte d'etiquetes HTML (resets, tipografies base).
- */
-@use "base";
+@import 'abstracts/variables';
 
-/**
- * 3. LAYOUT RULES
- * Estructures principals de la pàgina (header, footer, graelles).
- * El que tenies a "layouts/home" (header i footer) pertany aquí [5, 6].
- */
-@use "layouts/home"; 
+@import 'base/reset';
+@import 'base/base';
 
-/**
- * 4. MODULE RULES
- * Components reutilitzables (com les teves classes .targeta o .galeria).
- * Es recomana moure aquests estils de 'base' o 'home' a fitxers de mòduls separats.
- */
-@use "modules/cards";
-@use "modules/gallery";
-@use "modules/breadcrumbs"; 
-@use "modules/typography";
+@import 'layout/navbar';
+@import 'layout/footer';
 
+@import 'components/components';
+@import 'components/utilities';
 
-/**
- * 5. STATE RULES
- * Estats canviants dels elements (per exemple: .is-active, .is-hidden).
- */
-// @use "state";
-
-/**
- * 6. THEME RULES
- * Regles visuals específiques (colors de marca, temes foscos, etc.).
- */
-// @use "theme";
+@import 'pages/page-home';
+@import 'pages/page-speakers';
+@import 'pages/page-article';
+@import 'pages/page-contact';
+@import 'pages/responsive';

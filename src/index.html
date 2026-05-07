@@ -1,102 +1,100 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="ca">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" type="text/css" href="./assets/styles/main.scss" /> 
-    <title>El meu paratge</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sunuwar&display=swap" rel="stylesheet">
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jornades d'Artesania – Inici</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles/main.css" />
+</head>
+<body class="page-home">
 
-  <body>
-    <header>
-      <h1>
-       Pardals  <i class="fas fa-crow"></i> 
-      </h1>
-      <p>Directori excursionista</p>
-      <nav aria-label="Breadcrumb" class="breadcrumbs">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Catalunya</a></li>
-        <li><a href="#">Vall d'Aran</a></li>
-        <li aria-current="page"><b>Pic Mulleres</b></li>
-      </ul>
-    </nav>
-    </header>
-    
-    <main>
-      <div class="targeta">
-      <section>
-        <!-- INTRODUCCIÓ -->
-        <h2> Pic Mulleres</h2>
-        <p class="text">
-        El Pic de Molières, també conegut com Mulleres, és un cim de 3.010 metres situat als Pirineus, a la frontera entre Espanya i França. Forma part del massís de la Maladeta i destaca per ser una muntanya accessible dins dels tresmils, amb vistes espectaculars de cims propers com l’Aneto.        
-        </p>
-       </section>
-       
-       <section>
-        <!-- DADES RPINCIPALS -->
-        <div>
-        <h3>Dades principals</h3>
-        <ul class="text">
-          <li><strong>Altitud:</strong> 3.010 metres</li>
-          <li><strong>Ubicació:</strong> entre la Vall d’Aran i l’Alta Garona (França)</li>
-          <li><strong>Massís:</strong> Maladeta</li>
-          <li><strong>Zona protegida:</strong> dins del Parc Natural Posets-Maladeta</li>
-        </ul>
+   <include src="partials/_navbar.html"></include>
+
+  <!-- POSTER GRID (CSS Grid, with @supports fallback in CSS) -->
+  <main class="poster-main">
+    <div class="poster-grid">
+
+      <div class="poster-cell poster-title">
+        <h1 class="poster-heading">
+          <span class="poster-heading__line1">Jornades</span>
+          <span class="poster-heading__line2">d'Artesania</span>
+        </h1>
+        <p class="poster-edition">III Edició · Tardor 2026</p>
+      </div>
+
+      <div class="poster-cell poster-image poster-image--main">
+        <div class="poster-image__inner">
+          <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" aria-label="Imatge il·lustrativa d'artesania">
+            <rect width="400" height="320" fill="#f5ede0"/>
+            <ellipse cx="200" cy="160" rx="120" ry="100" fill="#c9a96e" opacity="0.3"/>
+            <path d="M120 240 Q200 120 280 240" stroke="#8b5e3c" stroke-width="3" fill="none"/>
+            <circle cx="200" cy="100" r="40" fill="#c9a96e" opacity="0.6"/>
+            <path d="M160 200 Q200 150 240 200 Q240 240 200 250 Q160 240 160 200Z" fill="#8b5e3c" opacity="0.4"/>
+            <text x="200" y="290" text-anchor="middle" font-family="serif" font-size="14" fill="#5c3d1e" opacity="0.7">· Taller · Xerrades · Cursos ·</text>
+          </svg>
         </div>
-      </section>
+      </div>
 
-      <!-- COM ARRIBAR -->
-      <section>
-        <h3>Com arribar-hi</h3>
-        <p class="text">
-        Primer has d’anar fins al poble de Benasque i des d’allí seguir la carretera A-139 cap al nord durant uns 12 km fins al final de la vall, on trobaràs l’aparcament dels Llanos del Hospital. Des d’aquest punt, la ruta comença travessant la zona propera a l’hotel i seguint les indicacions cap al vall de Remuñe, amb un camí inicialment suau que acompanya el riu i va guanyant alçada progressivament fins arribar a l’Ibón de Remuñe. A partir d’aquí, el recorregut es torna més de muntanya i encares la pujada final fins al cim del Mulleres. Es tracta d’una excursió llarga, d’unes 6 a 8 hores en total amb uns 1.200 metres de desnivell, per la qual cosa és recomanable començar aviat, portar prou aigua i roba adequada, i tenir en compte les condicions meteorològiques, especialment si hi ha neu.
-        </p>
-      </section>
-
-    <!-- TRACK -->
-      <section>
-        <h3>Recorregut</h3>
-          <figure class="imatge-track">
-          <img src="assets/images/mapa.png" alt="Ruta" />
-          </figure>
-      </section>
-
-      <!-- GALERIA D'IMATGES -->
-      <section >
-        <h3>Galeria d'imatges</h3>
-
-        <div class="galeria">
-        <figure>
-          <img src="assets/images/montserrat-1.jpg" alt="Vista de les agulles de Montserrat" class="gallery__img" />
-        </figure>
-
-        <figure>
-          <img src="assets/images/montserrat-2.jpg" alt="Monestir de Montserrat" class="gallery__img" />
-        </figure>  
+      <div class="poster-cell poster-date">
+        <div class="poster-date__content">
+          <p class="poster-date__label">Quan</p>
+          <p class="poster-date__value">15–17<br/>Oct</p>
+          <p class="poster-date__year">2026</p>
         </div>
-      </section>
+      </div>
 
+      <div class="poster-cell poster-location">
+        <div class="poster-location__content">
+          <i class="fa-solid fa-location-dot"></i>
+          <p>Centre Cívic<br/>La Verneda</p>
+        </div>
+      </div>
 
+      <div class="poster-cell poster-tagline">
+        <blockquote class="poster-quote">
+          "Recuperem els oficis,<br>construïm el futur."
+        </blockquote>
+      </div>
 
-  </div>
+      <div class="poster-cell poster-links">
+        <p class="poster-links__title">Explora les jornades</p>
+        <nav class="poster-nav-links">
+          <a href="pages/ponents.html" class="poster-link">
+            <i class="fa-solid fa-microphone"></i>
+            <span>Ponents</span>
+          </a>
+          <a href="pages/article.html" class="poster-link">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Informació</span>
+          </a>
+          <a href="pages/contacte.html" class="poster-link">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Contacte</span>
+          </a>
+        </nav>
+      </div>
 
+      <div class="poster-cell poster-decoration">
+        <div class="poster-deco-pattern"></div>
+      </div>
 
+      <div class="poster-cell poster-badge">
+        <div class="poster-badge__inner">
+          <p class="poster-badge__text">Entrada<br/>lliure</p>
+        </div>
+      </div>
 
+    </div>
+  </main>
+  
+ <include src="partials/_footer.html"></include>
 
-    <!-- FI -->
-    </main>
-
-     <!-- Aquesta etiqueta és especial de PostHTML per incloure el peu de pàgina -->
-    <include src="./views/footer.html"></include>
-    
-    <script type="module" src="./assets/scripts/main.js"></script>
-    <!-- do not remove this line! -->
-  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/scripts/main.js"></script>
+</body>
 </html>

@@ -1,0 +1,38 @@
+// =============================================================
+// _base.scss
+// Estils de base: body, tipografia global i pseudoclasses funcionals
+// Usa :is() i :where() per a estils globals eficients
+// =============================================================
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+
+  // :is() — aplica estils a qualsevol nivell d'encapçalament d'un sol cop
+  :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-primary);
+  }
+
+  // :where() — especificitat 0: permet sobreescriure fàcilment des de components
+  :where(p) {
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  // :where() — elimina marge del darrer paràgraf dins seccions i articles
+  :where(section p:last-child, article p:last-child) {
+    margin-bottom: 0;
+  }
+
+  a:hover {
+    color: var(--color-primary-light);
+  }
+}

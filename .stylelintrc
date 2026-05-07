@@ -1,9 +1,0 @@
-{
-  "extends": ["stylelint-config-recommended-scss"],
-  "rules": {
-    "selector-max-id": 0,
-    "max-nesting-depth": 3,
-    "no-duplicate-selectors": true,
-    "color-named": "never",
-  }
-}

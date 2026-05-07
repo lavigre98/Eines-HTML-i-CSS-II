@@ -1,0 +1,29 @@
+// =============================================================
+// _reset.scss
+// Reset bàsic: box-sizing, marges, comportament d'imatges i enllaços
+// =============================================================
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  img,
+  svg {
+    max-width: 100%;
+    display: block;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
