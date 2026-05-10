@@ -2,11 +2,15 @@
 // _page-article.scss
 // Pàgina d'article: format editorial amb capçalera hero
 // Usa pseudoclasses funcionals :has(), :is() i :where()
-// Container queries per al programa i les figures
+// Container queries per al programa i responsive dins del mateix fitxer
 // =============================================================
 
 @layer pages {
-  // --- Capçalera hero ---
+
+  // -----------------------------------------------------------
+  // Capçalera hero
+  // -----------------------------------------------------------
+
   .article-header {
     position: relative;
     background-color: var(--color-bg-alt);
@@ -16,22 +20,27 @@
   .article-hero-figure {
     margin: 0;
     position: relative;
+    height: 260px;
+    overflow: hidden;
 
-    svg {
+    &__img {
       width: 100%;
-      max-height: 260px;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center 35%;
     }
 
-    // :has() — si la figure té figcaption, afegeix gradient per suavitzar la transició
+    // :has() — si la figure té figcaption, afegeix un gradient inferior
     &:has(figcaption) {
       position: relative;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
+        right: 0;
         bottom: 0;
         left: 0;
-        right: 0;
         height: 50%;
         background: linear-gradient(transparent, var(--color-bg-alt));
         pointer-events: none;
@@ -56,8 +65,10 @@
   .article-header__title {
     font-family: var(--font-display);
     font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
     color: var(--color-primary);
     margin-bottom: 0.5rem;
+    text-wrap: balance;
   }
 
   .article-header__author {
@@ -67,7 +78,10 @@
     margin: 0;
   }
 
-  // --- Cos de l'article ---
+  // -----------------------------------------------------------
+  // Cos de l'article
+  // -----------------------------------------------------------
+
   .article-main {
     padding: var(--space-lg) 0;
   }
@@ -78,21 +92,23 @@
 
     // :is() — aplica estil a h2 i h3 dins del layout d'un sol cop
     :is(h2, h3) {
-      margin-bottom: 1rem;
       margin-top: 0;
+      margin-bottom: 1rem;
       color: var(--color-primary);
     }
 
-    // :is() — h2 amb separador visual
+    // :is() — estil específic per als h2
     :is(h2) {
       font-size: clamp(1.4rem, 3vw, 2rem);
-      border-bottom: 2px solid var(--color-accent-light);
       padding-bottom: 0.5rem;
       margin-bottom: 1.5rem;
     }
   }
 
-  // --- Secció lead ---
+  // -----------------------------------------------------------
+  // Secció lead
+  // -----------------------------------------------------------
+
   .article-lead {
     margin-bottom: var(--space-lg);
 
@@ -128,7 +144,10 @@
     }
   }
 
-  // --- Dues columnes ---
+  // -----------------------------------------------------------
+  // Dues columnes
+  // -----------------------------------------------------------
+
   .article-body {
     margin-bottom: var(--space-lg);
   }
@@ -150,7 +169,10 @@
     color: var(--color-text-muted);
   }
 
-  // --- Programa (llista numerada) ---
+  // -----------------------------------------------------------
+  // Programa
+  // -----------------------------------------------------------
+
   .article-program {
     margin-bottom: var(--space-lg);
     container-type: inline-size;
@@ -201,7 +223,7 @@
     }
   }
 
-  // Container query: apila ítem en contenidors estrets
+  // Container query — apila els ítems del programa en contenidors estrets
   @container program (max-width: 500px) {
     .program-list__item {
       flex-direction: column;
@@ -209,7 +231,10 @@
     }
   }
 
-  // --- Figures ---
+  // -----------------------------------------------------------
+  // Figures
+  // -----------------------------------------------------------
+
   .article-figure {
     margin: var(--space-lg) 0;
 
@@ -218,7 +243,7 @@
       margin-right: calc(-1 * var(--space-md));
     }
 
-    // :has() — figura amb figcaption: arrodoneix només la part superior de la imatge
+    // :has() — figura amb figcaption: arrodoneix només la part superior
     &:has(figcaption) .article-figure__img {
       border-radius: var(--radius-md) var(--radius-md) 0 0;
       overflow: hidden;
@@ -241,8 +266,78 @@
     }
   }
 
-  // --- Tancament ---
+  // -----------------------------------------------------------
+  // Tancament
+  // -----------------------------------------------------------
+
   .article-closing {
     margin-bottom: var(--space-md);
+  }
+
+  // -----------------------------------------------------------
+  // Responsive tablet i mòbil
+  // -----------------------------------------------------------
+
+  @media (max-width: 899px) {
+    .article-main {
+      padding: var(--space-md) 0;
+    }
+
+    .article-lead {
+      margin-bottom: var(--space-md);
+
+      &__intro {
+        margin-bottom: var(--space-sm);
+      }
+    }
+
+    .article-two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+
+    .article-two-col__left,
+    .article-two-col__right {
+      min-width: 0;
+    }
+
+    .article-two-col__right {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .article-two-col__right p {
+      margin: 0;
+    }
+
+    .article-layout {
+      :is(h2) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  // -----------------------------------------------------------
+  // Responsive mòbil menut
+  // -----------------------------------------------------------
+
+  @media (max-width: 480px) {
+    .article-hero-figure {
+      height: 210px;
+    }
+
+    .article-header__content {
+      padding: var(--space-md) 0;
+    }
+
+    .article-header__title {
+      font-size: clamp(1.8rem, 10vw, 2.4rem);
+    }
+
+    .article-figure--wide {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 }

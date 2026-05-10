@@ -1,18 +1,20 @@
-// =============================================================
-// _navbar.scss
-// Barra de navegació superior (Bootstrap navbar customitzada)
-// =============================================================
+@layer layout {
 
-@layer components {
+  //Ombra baix del navbar.
   .navbar-custom {
-    background-color: var(--color-primary);
-    padding: 0.875rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
   }
 
+  .navbar-custom .site-container {
+    width: min(100% - 2rem, 1200px);
+    margin-inline: auto;
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  //Icona i el text “Artesania” estiguen alineats horitzontalment i amb separació.
   .brand-logo {
     display: flex;
     align-items: center;
@@ -29,6 +31,7 @@
     }
   }
 
+  //Personalitza els enllaços del menú.
   .navbar-custom .nav-link {
     color: var(--color-accent-light) !important;
     font-size: 0.9rem;
@@ -39,6 +42,7 @@
     padding: 0.5rem 0.75rem !important;
     border-radius: var(--radius-sm);
 
+    //Canvi de color
     &:hover,
     &.active {
       color: var(--color-white) !important;

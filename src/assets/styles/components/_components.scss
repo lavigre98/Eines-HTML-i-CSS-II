@@ -1,16 +1,20 @@
 // =============================================================
 // _components.scss
-// Components Bootstrap customitzats: botons, alerts, dropdowns, modals
+// Components Bootstrap customitzats: alertes, botons, badges i enllaços
 // =============================================================
 
 @layer components {
   // --- Alert ---
+  // Es manté el component .alert de Bootstrap i es personalitza
+  // mitjançant les variables CSS pròpies del component.
   .alert-craft {
-    background-color: var(--color-accent-light);
-    border-color: var(--color-accent);
-    color: var(--color-primary);
-    border-radius: var(--radius-md);
+    --bs-alert-bg: var(--color-accent-light);
+    --bs-alert-border-color: var(--color-accent);
+    --bs-alert-color: var(--color-primary);
+    --bs-alert-border-radius: var(--radius-md);
+
     padding: 1rem 1.5rem;
+    font-weight: 600;
 
     .alert-link {
       color: var(--color-primary);
@@ -18,100 +22,48 @@
     }
   }
 
-  // --- Botons ---
+  // --- Botó principal ---
+  // Es parteix del component .btn de Bootstrap i es personalitza
+  // amb una classe pròpia del projecte.
   .btn-craft {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-    color: var(--color-white);
+    --bs-btn-bg: var(--color-primary);
+    --bs-btn-border-color: var(--color-primary);
+    --bs-btn-color: var(--color-white);
+
+    --bs-btn-hover-bg: var(--color-primary-light);
+    --bs-btn-hover-border-color: var(--color-primary-light);
+    --bs-btn-hover-color: var(--color-white);
+
+    --bs-btn-active-bg: var(--color-primary-light);
+    --bs-btn-active-border-color: var(--color-primary-light);
+    --bs-btn-active-color: var(--color-white);
+
+    --bs-btn-focus-shadow-rgb: 92, 61, 30;
+
     font-family: var(--font-body);
     font-weight: 600;
     border-radius: var(--radius-md);
     padding: 0.6rem 1.5rem;
-    transition: all var(--transition-fast);
     letter-spacing: 0.02em;
-
-    &:hover,
-    &:focus {
-      background-color: var(--color-primary-light);
-      border-color: var(--color-primary-light);
-      color: var(--color-white);
-    }
   }
 
-  .btn-outline-craft {
-    border: 1.5px solid var(--color-primary);
+  // --- Badge ---
+  // Es parteix del component .badge de Bootstrap i es personalitza
+  // per a les etiquetes dels ponents.
+  .badge-tag {
+    background-color: var(--color-accent-light);
     color: var(--color-primary);
-    background-color: transparent;
+    font-size: 0.75rem;
     font-weight: 600;
-    border-radius: var(--radius-md);
-    padding: 0.4rem 1rem;
-    transition: all var(--transition-fast);
-
-    &:hover {
-      background-color: var(--color-primary);
-      color: var(--color-white);
-    }
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.04em;
   }
 
+  // --- Enllaç destacat ---
   .link-craft {
     color: var(--color-primary-light);
     font-weight: 600;
     text-decoration: underline;
-  }
-
-  // --- Dropdown ---
-  .dropdown-menu {
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    font-size: 0.9rem;
-  }
-
-  .dropdown-item:hover {
-    background-color: var(--color-accent-light);
-    color: var(--color-primary);
-  }
-
-  // --- Form check ---
-  .form-check-input:checked {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-  }
-
-  // --- Modal ---
-  .modal-craft {
-    border: none;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-
-    .modal-header {
-      background-color: var(--color-primary);
-      color: var(--color-white);
-      border-bottom: none;
-    }
-
-    .modal-title {
-      color: var(--color-accent-light);
-      font-family: var(--font-display);
-    }
-
-    .btn-close {
-      filter: brightness(0) invert(1);
-    }
-
-    .modal-body {
-      color: var(--color-text);
-      font-size: 0.95rem;
-
-      ul {
-        margin-top: 0.5rem;
-        padding-left: 1.2rem;
-      }
-
-      li {
-        margin-bottom: 0.3rem;
-        color: var(--color-primary);
-      }
-    }
   }
 }

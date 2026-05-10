@@ -1,275 +1,221 @@
-// =============================================================
-// _page-home.scss
-// Pàgina de portada: maquetació CSS Grid en format poster
-// @supports proporciona fallback flex per a navegadors sense Grid
-// Noves unitats: dvh (dynamic viewport height)
-// =============================================================
-
-@layer pages {
-  .poster-main {
-    // dvh — dynamic viewport height: descompta les barres del navegador mòbil
-    min-height: calc(100dvh - 64px);
-    background-color: var(--color-bg-alt);
-    padding: var(--space-md);
-    display: flex;
-    align-items: stretch;
+ @layer pages {
+  
+  .home-main {
+    background-color: var(--color-bg);
   }
 
-  // --- Fallback flex per a navegadors sense CSS Grid ---
-  .poster-grid {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-    background-color: var(--color-bg-alt);
-  }
-
-  .poster-cell {
-    flex: 1 1 200px;
-    background-color: var(--color-white);
-    border-radius: var(--radius-md);
-    padding: var(--space-md);
-    overflow: hidden;
-  }
-
-  // --- CSS Grid: millora progressiva amb @supports ---
+  // Si el navegador suporta CSS Grid, fem la portada tipus pòster
   @supports (display: grid) {
-    .poster-grid {
+    .home-main {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: auto;
-      gap: var(--space-sm);
-      width: 100%;
-    }
-
-    .poster-title      { grid-column: 1 / 8;   grid-row: 1; }
-    .poster-date       { grid-column: 8 / 10;  grid-row: 1; }
-    .poster-badge      { grid-column: 10 / 13; grid-row: 1; }
-    .poster-image      { grid-column: 1 / 6;   grid-row: 2; }
-    .poster-tagline    { grid-column: 6 / 10;  grid-row: 2; }
-    .poster-location   { grid-column: 10 / 13; grid-row: 2; }
-    .poster-links      { grid-column: 1 / 8;   grid-row: 3; }
-    .poster-decoration { grid-column: 8 / 13;  grid-row: 3; }
-  }
-
-  // --- Cel·les de la graella ---
-  .poster-title {
-    background-color: var(--color-primary);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: var(--space-md);
-  }
-
-  .poster-heading {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    line-height: 1;
-    color: var(--color-white);
-    margin-bottom: 0.5rem;
-
-    &__line1,
-    &__line2 {
-      display: block;
-    }
-
-    &__line2 {
-      color: var(--color-accent);
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 68vh auto;
     }
   }
 
-  .poster-edition {
-    color: var(--color-accent-light);
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin: 0;
-  }
+  // -----------------------------------------------------------
+  // Imatge principal
+  // -----------------------------------------------------------
 
-  .poster-image {
-    padding: 0;
+  .hero {
+    height: 68vh; //Si no hi ha Grid, la imatge tindrà una altura gran de portada.
     overflow: hidden;
-    background-color: var(--color-accent-light);
-    min-height: 220px;
+  }
 
-    &__inner {
-      width: 100%;
+  // Quan hi ha Grid, la .hero ja no mana amb 68vh; simplement ocupa el 100% de la primera fila del Grid.
+  @supports (display: grid) {
+    .hero {
       height: 100%;
-
-      svg {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+      grid-column: 1 / 3; //Comença en la línia 1 i acaba en la línia
+      grid-row: 1;
     }
   }
 
-  .poster-date {
-    background-color: var(--color-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    &__label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--color-primary);
-      margin-bottom: 0.25rem;
-      font-weight: 600;
-    }
-
-    &__value {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 900;
-      color: var(--color-primary);
-      line-height: 1;
-      margin: 0;
-    }
-
-    &__year {
-      font-size: 1rem;
-      color: var(--color-primary-light);
-      margin: 0;
-    }
-  }
-
-  .poster-location {
-    background-color: var(--color-bg);
-    border: 2px solid var(--color-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: var(--space-sm);
-
-    &__content {
-      text-align: center;
-
-      i {
-        font-size: 2rem;
-        color: var(--color-accent);
-        margin-bottom: 0.5rem;
-        display: block;
-      }
-
-      p {
-        font-weight: 600;
-        color: var(--color-primary);
-        font-size: 0.95rem;
-        margin: 0;
-      }
-    }
-  }
-
-  .poster-tagline {
-    background-color: var(--color-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .poster-quote {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-    color: var(--color-primary);
-    text-align: center;
-    line-height: 1.4;
-    border: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .poster-links {
-    background-color: var(--color-primary-light);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--space-sm);
-
-    &__title {
-      color: var(--color-accent-light);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 600;
-      margin: 0;
-    }
-  }
-
-  .poster-nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .poster-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--color-white);
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: var(--radius-full);
-    transition: all var(--transition-fast);
-    text-decoration: none;
-    font-size: 0.9rem;
-
-    &:hover {
-      background-color: var(--color-white);
-      color: var(--color-primary);
-    }
-  }
-
-  .poster-decoration {
-    background-color: var(--color-accent-light);
-    overflow: hidden;
-    position: relative;
-  }
-
-  .poster-deco-pattern {
+  .hero__img {
     width: 100%;
     height: 100%;
-    min-height: 80px;
-    background-image: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 10px,
-      rgba(139, 94, 60, 0.15) 10px,
-      rgba(139, 94, 60, 0.15) 20px
-    );
+    object-fit: cover;
+    object-position: center 30%;
   }
 
-  .poster-badge {
-    background-color: var(--color-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  // -----------------------------------------------------------
+  // Títol damunt de la imatge
+  // -----------------------------------------------------------
 
-    &__inner {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background-color: var(--color-primary);
+  .home-title-overlay {
+    display: none;
+  }
+
+  @supports (display: grid) {
+    .home-title-overlay {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-end;
+      grid-column: 1 / 3;
+      grid-row: 1;
+      z-index: 2;
+      width: min(100% - 2rem, 1200px);
+      margin-inline: auto;
+      padding-block: var(--space-md);
+    }
+  }
+
+  .home-title {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+  }
+
+  .home-title__line1 {
+    display: block;
+    color: var(--color-white);
+  }
+
+  .home-title__line2 {
+    display: block;
+    color: var(--color-accent);
+  }
+
+  // -----------------------------------------------------------
+  // Data damunt de la imatge
+  // -----------------------------------------------------------
+
+  .home-date-overlay {
+    display: none;
+  }
+
+  @supports (display: grid) {
+    .home-date-overlay {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      grid-column: 1 / 3;
+      grid-row: 1;
+      z-index: 2;
+      width: min(100% - 2rem, 1200px);
+      margin-inline: auto;
+      padding-block: var(--space-md);
+    }
+  }
+
+  .home-date {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-white);
+    text-align: right;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  // -----------------------------------------------------------
+  // Franja inferior
+  // -----------------------------------------------------------
+
+.home-info {
+  container-type: inline-size;
+  container-name: home-info;
+  padding-block: 1rem;
+  background-color: var(--color-bg);
+  border-top: 2px solid var(--color-primary);
+}
+
+.home-info__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+  @supports (display: grid) {
+    .home-info {
+      grid-column: 1 / 3;
+      grid-row: 2;
+    }
+  }
+
+  .home-description {
+    max-width: 55ch;
+    margin: 0;
+    color: var(--color-primary);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .home-cta {
+    display: inline-block;
+    flex-shrink: 0;
+    padding: 0.75rem 2rem;
+    border-radius: 999px;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  // -----------------------------------------------------------
+  // Container query
+  // -----------------------------------------------------------
+
+  @container home-info (max-width: 520px) {
+    .home-description {
+      font-size: 0.9rem;
     }
 
-    &__text {
-      color: var(--color-white);
-      font-weight: 700;
+    .home-cta {
+      width: 100%;
       text-align: center;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      line-height: 1.3;
-      margin: 0;
     }
+  }
+
+  // -----------------------------------------------------------
+  // Responsive
+  // -----------------------------------------------------------
+
+  @media (max-width: 768px) {
+    .hero {
+      height: 60vh;
+    }
+
+    @supports (display: grid) {
+      .home-main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 60vh auto;
+      }
+
+      .hero,
+      .home-title-overlay,
+      .home-date-overlay,
+      .home-info {
+        grid-column: 1;
+      }
+
+      .hero {
+        grid-row: 1;
+      }
+
+      .home-title-overlay {
+        grid-row: 1;
+        padding: var(--space-sm);
+      }
+
+      .home-date-overlay {
+        align-items: flex-start;
+        grid-row: 1;
+        padding: var(--space-sm);
+      }
+
+      .home-info {
+        grid-row: 2;
+      }
+    }
+
+.home-info__inner {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
   }
 }

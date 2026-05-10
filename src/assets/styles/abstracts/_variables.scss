@@ -1,47 +1,85 @@
 // =============================================================
 // _variables.scss
-// Tokens de disseny: colors, tipografia, espais, radis, transicions
+// Variables Sass per personalitzar Bootstrap
+// Variables CSS per al disseny propi del projecte
 // =============================================================
+
+
+// -------------------------------------------------------------
+// 1. Variables Sass per personalitzar Bootstrap
+// -------------------------------------------------------------
+// Aquestes variables les llegirà Bootstrap quan s'importe en
+// _dependencies.scss. Serveixen per canviar colors, tipografies,
+// radis i alguns valors de la navbar.
+// -------------------------------------------------------------
+
+$primary: #5c3d1e;
+$secondary: #c9a96e;
+$body-bg: #faf7f2;
+$body-color: #2d1f0e;
+
+$font-family-base: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+$headings-font-family: 'Playfair Display', Georgia, serif;
+
+$border-radius: 0.8rem;
+
+$headings-font-weight: 900;
+$headings-line-height: 0.88;
+$headings-margin-bottom: 0;
+
+// Variables Sass específiques de la navbar de Bootstrap
+$navbar-padding-y: 0.875rem;
+$navbar-dark-color: rgba(255, 255, 255, 0.85);
+$navbar-dark-hover-color: #ffffff;
+$navbar-dark-active-color: #ffffff;
+
+
+// -------------------------------------------------------------
+// 2. Variables CSS per al disseny propi del projecte
+// -------------------------------------------------------------
+// Aquestes variables s'usen en els fitxers propis del projecte,
+// per exemple en _page-home.scss, _navbar.scss, _footer.scss, etc.
+// -------------------------------------------------------------
 
 @layer base {
   :root {
     // --- Colors principals ---
-    --color-primary:       #5c3d1e;
+    --color-primary: #5c3d1e;
     --color-primary-light: #8b5e3c;
-    --color-accent:        #c9a96e;
-    --color-accent-light:  #e8d5b7;
-    --color-bg:            #faf7f2;
-    --color-bg-alt:        #f5ede0;
-    --color-text:          #2d1f0e;
-    --color-text-muted:    #7a6048;
-    --color-white:         #ffffff;
-    --color-border:        #d4bfa0;
+    --color-accent: #c9a96e;
+    --color-accent-light: #e8d5b7;
+    --color-bg: #faf7f2;
+    --color-bg-alt: #f5ede0;
+    --color-text: #2d1f0e;
+    --color-text-muted: #7a6048;
+    --color-white: #ffffff;
+    --color-border: #d4bfa0;
 
-    // --- Colors oklch (pàgina de contacte — noves unitats de color) ---
+    // --- Colors OKLCH ---
+    // S'utilitzen per complir el requisit de noves formes de color CSS.
     --color-oklch-primary: oklch(35% 0.08 50);
-    --color-oklch-accent:  oklch(70% 0.10 70);
-    --color-oklch-bg:      oklch(97% 0.02 80);
-    --color-oklch-muted:   oklch(55% 0.05 60);
+    --color-oklch-accent: oklch(70% 0.10 70);
+    --color-oklch-bg: oklch(97% 0.02 80);
+    --color-oklch-muted: oklch(55% 0.05 60);
 
     // --- Tipografia ---
     --font-display: 'Playfair Display', Georgia, serif;
-    --font-body:    'Source Sans 3', 'Helvetica Neue', sans-serif;
+    --font-body: 'Source Sans 3', 'Helvetica Neue', sans-serif;
 
     // --- Espais ---
     --space-xs: 0.5rem;
     --space-sm: 1rem;
     --space-md: 2rem;
     --space-lg: 4rem;
-    --space-xl: 6rem;
 
     // --- Radis ---
-    --radius-sm:   4px;
-    --radius-md:   8px;
-    --radius-lg:   16px;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
     --radius-full: 9999px;
 
     // --- Transicions ---
     --transition-fast: 0.2s ease;
-    --transition-med:  0.35s ease;
+    --transition-med: 0.35s ease;
   }
 }

@@ -1,205 +1,440 @@
 // =============================================================
 // _page-contact.scss
-// Pàgina de contacte: formulari + info cards
-// Noves unitats: dvh, svh, cqi (container query length units)
-// Noves funcions de color: oklch()
-// Container queries per a info-cards i footer
+// Pàgina de contacte / inscripció: disseny editorial en dues columnes
+// Adaptat a les variables, fonts i @layer del projecte
+// Manté noves unitats: dvh, svh, cqi + oklch()
+// Responsive integrat dins de la mateixa pàgina
 // =============================================================
 
 @layer pages {
-  // Capçalera amb color oklch
-  .page-header--contact {
-    background-color: var(--color-oklch-primary);
+
+  // ── CAPÇALERA ──────────────────────────────────────────────
+  .contact-header {
+    padding-block: var(--space-md) calc(var(--space-md) * 1.5);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg);
   }
 
-  // Main: dvh per a altura mínima dinàmica
+  .contact-header__edition {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-header__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5vw, 4.4rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  // ── LAYOUT PRINCIPAL ───────────────────────────────────────
   .contact-main {
-    min-height: 60dvh;
-    padding: var(--space-lg) 0;
-    background-color: var(--color-oklch-bg);
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: 1fr auto;
+    min-height: 80dvh;
   }
 
-  // --- Layout principal ---
-  .contact-layout {
+  // ── SIDEBAR ESQUERRA ───────────────────────────────────────
+  .contact-sidebar {
+    grid-column: 1;
+    grid-row: 1;
+    padding: var(--space-md);
+    border-right: 1px solid var(--color-border);
     display: flex;
-    gap: var(--space-lg);
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
-
-  // --- Targetes d'informació ---
-  .contact-info {
-    flex: 0 1 300px;
+    flex-direction: column;
+    gap: var(--space-sm);
     container-type: inline-size;
-    container-name: contact-info;
+    container-name: contact-sidebar;
   }
 
-  .info-cards {
+  .contact-sidebar__block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .contact-sidebar__label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .contact-sidebar__title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .contact-sidebar__body {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    margin: 0;
+
+    a {
+      color: var(--color-oklch-primary);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+        color: var(--color-primary-light);
+      }
+    }
+  }
+
+  .contact-sidebar__divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: calc(var(--space-xs) / 2) 0;
+  }
+
+  // Container query: sidebar molt estreta
+  @container contact-sidebar (max-width: 260px) {
+    .contact-sidebar__title {
+      font-size: 1.1rem;
+    }
+  }
+
+  // ── PANEL FORMULARI DRET ───────────────────────────────────
+  .contact-form-panel {
+    grid-column: 2;
+    grid-row: 1;
+    padding: var(--space-md);
+  }
+
+  .contact-form-panel__heading {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+  }
+
+  // ── FORMULARI ──────────────────────────────────────────────
+  .contact-form {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
   }
 
-  .info-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    background-color: var(--color-white);
-    border-radius: var(--radius-md);
-    padding: 1rem 1.25rem;
-    border: 1px solid var(--color-border);
-    container-type: inline-size;
-    container-name: info-card;
-
-    &__icon {
-      flex-shrink: 0;
-      // cqi — container query inline units: mida relativa al contenidor, no al viewport
-      width: clamp(2rem, 10cqi, 3rem);
-      height: clamp(2rem, 10cqi, 3rem);
-      background-color: var(--color-accent-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-oklch-primary);
-      font-size: 1rem;
-    }
-
-    &__content {
-      h3 {
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--color-text-muted);
-        margin-bottom: 0.25rem;
-        font-family: var(--font-body);
-        font-weight: 600;
-      }
-
-      p {
-        font-size: 0.9rem;
-        margin: 0;
-        color: var(--color-primary);
-        line-height: 1.5;
-      }
-
-      a {
-        color: var(--color-primary-light);
-        text-decoration: underline;
-      }
-    }
+  .contact-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
   }
 
-  // Container query: en contenidor molt estret, apila icona i text
-  @container contact-info (max-width: 260px) {
-    .info-card {
-      flex-direction: column;
-      gap: 0.5rem;
-
-      &__icon {
-        width: 2rem;
-        height: 2rem;
-      }
-    }
-  }
-
-  // --- Formulari ---
-  .contact-form-section {
-    flex: 1 1 380px;
-
-    h2 {
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      margin-bottom: var(--space-sm);
-      color: var(--color-oklch-primary);
-    }
-  }
-
-  .contact-form-wrap {
-    background-color: var(--color-white);
-    border-radius: var(--radius-lg);
-    padding: var(--space-md);
-    border: 1px solid var(--color-border);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  }
-
-  .contact-form {
+  // ── CAMP GENÈRIC ───────────────────────────────────────────
+  .contact-field {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-  }
+    gap: 0.45rem;
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-
-    // :has() — si l'input dins té error visible, posa l'etiqueta en vermell
-    &:has(input:invalid:not(:placeholder-shown)) .form-label {
+    &:has(.contact-field__input:invalid:not(:placeholder-shown)) .contact-field__label {
       color: #c0392b;
     }
   }
 
-  .form-label {
-    font-size: 0.9rem;
+  .contact-field__label {
+    font-size: 0.68rem;
     font-weight: 600;
-    color: var(--color-primary);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-oklch-muted);
   }
 
-  .required {
+  .contact-field__req {
     color: var(--color-oklch-accent);
   }
 
-  // :is() — estils compartits per a inputs i selects
-  :is(.form-control, .form-select) {
-    border: 1.5px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    padding: 0.6rem 0.85rem;
+  .contact-field__input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.45rem 0;
     font-family: var(--font-body);
     font-size: 0.95rem;
     color: var(--color-text);
-    background-color: var(--color-bg);
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
     width: 100%;
+    transition: border-color var(--transition-fast);
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+
+    &::placeholder {
+      color: var(--color-border);
+    }
 
     &:focus {
-      outline: none;
-      border-color: var(--color-accent);
-      box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.2);
+      border-bottom-color: var(--color-oklch-primary);
     }
   }
 
-  textarea.form-control {
+  .contact-field__textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 12svh;
+    line-height: 1.65;
   }
 
-  // --- Mapa placeholder ---
-  .map-placeholder {
-    background-color: var(--color-bg-alt);
-    border-radius: var(--radius-lg);
-    border: 2px dashed var(--color-border);
-    // svh — small viewport height: usa la mida mínima del viewport (útil en mobile)
-    min-height: 20svh;
+  // ── TARGETES DE TEMA ───────────────────────────────────────
+  .contact-tema {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .contact-tema__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .tema-card {
+    border: 1px solid var(--color-border);
+    background: transparent;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition:
+      border-color var(--transition-fast),
+      background-color var(--transition-fast);
+    container-type: inline-size;
+    container-name: tema-card;
+
+    &:hover {
+      border-color: var(--color-primary-light);
+      background-color: var(--color-accent-light);
+    }
+
+    &--selected {
+      border-color: var(--color-oklch-primary);
+      background-color: var(--color-bg-alt);
+    }
+  }
+
+  .tema-card__name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(0.85rem, 5cqi, 1rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.2rem;
+  }
+
+  .tema-card__meta {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  // ── PRIVACITAT ─────────────────────────────────────────────
+  .contact-privacy {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+
+  .contact-privacy__check {
+    width: 14px;
+    height: 14px;
+    margin-top: 2px;
+    accent-color: var(--color-primary);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .contact-privacy__label {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  // ── SUBMIT ─────────────────────────────────────────────────
+  .contact-submit {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: var(--space-sm);
+    padding-top: var(--space-xs);
+  }
 
-    &__inner {
-      text-align: center;
-      padding: var(--space-md);
+  .contact-submit__btn {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 0;
+    padding: 0.85rem 2.25rem;
+    flex-shrink: 0;
+  }
 
-      i {
-        font-size: 3rem;
-        color: var(--color-accent);
-        margin-bottom: 1rem;
-        display: block;
-      }
+  .contact-submit__note {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    line-height: 1.45;
+    margin: 0;
+  }
 
-      p {
-        color: var(--color-primary);
-        font-weight: 600;
-        margin-bottom: 1rem;
-      }
+  // ── MAP STRIP ──────────────────────────────────────────────
+  .contact-map-strip {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-oklch-bg);
+  }
+
+  .contact-map-strip__info {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+
+    i {
+      color: var(--color-accent);
+      font-size: 1rem;
+    }
+  }
+
+  .contact-map-strip__link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-oklch-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-oklch-primary);
+    padding-bottom: 1px;
+    white-space: nowrap;
+    transition: opacity var(--transition-fast);
+
+    &:hover {
+      opacity: 0.65;
+      color: var(--color-oklch-primary);
+    }
+
+    i {
+      font-size: 0.6rem;
+    }
+  }
+
+  // ── RESPONSIVE: TABLET ─────────────────────────────────────
+  @media (max-width: 768px) {
+    .contact-main {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+    }
+
+    .contact-sidebar {
+      grid-column: 1;
+      grid-row: 1;
+      border-right: none;
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-md) 0;
+
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+      align-items: start;
+    }
+
+    // El primer bloc, "L'esdeveniment", ocupa tota l'amplada
+    .contact-sidebar__block:first-child {
+      grid-column: 1 / -1;
+    }
+
+    .contact-sidebar__block {
+      gap: 0.35rem;
+    }
+
+    .contact-sidebar__divider {
+      grid-column: 1 / -1;
+      width: 100%;
+      margin: 0;
+    }
+
+    // En tablet, amaguem l'últim separador perquè "Consultes"
+    // puga pujar al costat de "Preu"
+    .contact-sidebar__divider:last-of-type {
+      display: none;
+    }
+
+    .contact-form-panel {
+      grid-column: 1;
+      grid-row: 2;
+      padding: var(--space-md) 0;
+    }
+
+    .contact-form__row {
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+
+    .contact-tema__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-header {
+      padding-block: var(--space-sm);
+    }
+
+    .contact-map-strip {
+      padding-inline: 0;
+    }
+  }
+
+  // ── RESPONSIVE: MÒBIL ──────────────────────────────────────
+  @media (max-width: 480px) {
+    .contact-header__title {
+      font-size: clamp(2.1rem, 12vw, 3.2rem);
+    }
+
+    .contact-sidebar {
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+
+    .contact-sidebar__divider {
+      display: block;
+      margin: calc(var(--space-xs) / 2) 0;
+    }
+
+    .contact-submit {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .contact-submit__btn {
+      width: 100%;
+    }
+
+    .contact-map-strip {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 }

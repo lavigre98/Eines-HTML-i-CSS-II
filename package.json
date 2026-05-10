@@ -52,6 +52,7 @@
     "@fontsource/playfair-display": "^5.2.8",
     "@fontsource/source-sans-3": "^5.2.9",
     "@fortawesome/fontawesome-free": "^7.2.0",
+    "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.8"
   }
 }

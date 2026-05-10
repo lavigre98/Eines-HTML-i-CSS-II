@@ -3,11 +3,13 @@
 // Pàgina de ponents: capçalera de pàgina i retícula flex de speaker cards
 // Flex layout propi (sense .row/.col-* de Bootstrap)
 // Container queries per a les cards individuals
-// :has() per a cards que contenen SVG
+// :has() per a cards que contenen imatges
+// Responsive integrat dins de la mateixa pàgina
 // =============================================================
 
-@layer layout {
-  // --- Capçalera de pàgina (compartida amb article) ---
+@layer pages {
+
+  // --- Capçalera de pàgina ---
   .page-header {
     background-color: var(--color-primary);
     padding: var(--space-lg) 0 var(--space-md);
@@ -32,7 +34,8 @@
     padding: var(--space-lg) 0;
   }
 
-  // --- Retícula Flex (NO Bootstrap row/col-*) ---
+  // --- Retícula Flex ---
+  // No s'utilitzen les classes .row ni .col-* de Bootstrap.
   .speakers-container {
     display: flex;
     flex-wrap: wrap;
@@ -42,7 +45,6 @@
 
   // --- Speaker Card ---
   .speaker-card {
-    // Context de contenidor per a container queries internes
     container-type: inline-size;
     container-name: speaker-card;
 
@@ -52,7 +54,9 @@
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    transition: transform var(--transition-med), box-shadow var(--transition-med);
+    transition:
+      transform var(--transition-med),
+      box-shadow var(--transition-med);
     border: 1px solid var(--color-border);
 
     &:hover {
@@ -60,30 +64,34 @@
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
     }
 
-    // :has() — si la card conté un SVG, afegeix overlay gradient a la imatge
-    &:has(svg) .speaker-card__img-wrap {
+    // :has() — si la card conté una imatge, afegeix un degradat inferior
+    &:has(img) .speaker-card__img-wrap {
       position: relative;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
+        right: 0;
         bottom: 0;
         left: 0;
-        right: 0;
         height: 40px;
         background: linear-gradient(transparent, var(--color-white));
+        pointer-events: none;
       }
     }
 
     &__img-wrap {
       width: 100%;
-      height: 160px;
+      height: 250px;
       overflow: hidden;
+    }
 
-      svg {
-        width: 100%;
-        height: 100%;
-      }
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 45%;
+      display: block;
     }
 
     &__body {
@@ -111,20 +119,33 @@
     }
   }
 
-  // Container query: si la card és molt estreta, redueix tipografia
+  // Container query: si la card és molt estreta, redueix la tipografia
   @container speaker-card (max-width: 280px) {
-    .speaker-card__name { font-size: 1.1rem; }
-    .speaker-card__desc { font-size: 0.82rem; }
+    .speaker-card__name {
+      font-size: 1.1rem;
+    }
+
+    .speaker-card__desc {
+      font-size: 0.82rem;
+    }
   }
 
-  // --- Badge de categoria ---
-  .badge-tag {
-    background-color: var(--color-accent-light);
-    color: var(--color-primary);
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.2rem 0.6rem;
-    border-radius: var(--radius-full);
-    letter-spacing: 0.04em;
+  // --- Responsive ---
+  // El responsive queda dins de la mateixa capa pages perquè modifica
+  // elements propis de la pàgina de ponents.
+  @media (max-width: 768px) {
+    .speakers-container {
+      justify-content: center;
+    }
+
+    .speaker-card {
+      flex: 0 1 calc(50% - var(--space-md));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .speaker-card {
+      flex: 0 1 100%;
+    }
   }
 }

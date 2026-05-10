@@ -10,82 +10,40 @@
 
 <include src="views/navbar.html"></include>
 
-  <!-- POSTER GRID (CSS Grid, with @supports fallback in CSS) -->
-  <main class="poster-main">
-    <div class="poster-grid">
+  <!-- Contingut principal de la pàgina d'inici -->
+<main class="home-main">
 
-      <div class="poster-cell poster-title">
-        <h1 class="poster-heading">
-          <span class="poster-heading__line1">Jornades</span>
-          <span class="poster-heading__line2">d'Artesania</span>
-        </h1>
-        <p class="poster-edition">III Edició · Tardor 2026</p>
-      </div>
+  <section class="hero">
+    <img
+      src="assets/images/ceramica.jpg"
+      alt="Mans d'artesà treballant l'argila"
+      class="hero__img"
+    />
+  
+  </section>
 
-      <div class="poster-cell poster-image poster-image--main">
-        <div class="poster-image__inner">
-          <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" aria-label="Imatge il·lustrativa d'artesania">
-            <rect width="400" height="320" fill="#f5ede0"/>
-            <ellipse cx="200" cy="160" rx="120" ry="100" fill="#c9a96e" opacity="0.3"/>
-            <path d="M120 240 Q200 120 280 240" stroke="#8b5e3c" stroke-width="3" fill="none"/>
-            <circle cx="200" cy="100" r="40" fill="#c9a96e" opacity="0.6"/>
-            <path d="M160 200 Q200 150 240 200 Q240 240 200 250 Q160 240 160 200Z" fill="#8b5e3c" opacity="0.4"/>
-            <text x="200" y="290" text-anchor="middle" font-family="serif" font-size="14" fill="#5c3d1e" opacity="0.7">· Taller · Xerrades · Cursos ·</text>
-          </svg>
-        </div>
-      </div>
+   <div class="home-title-overlay">
+    <h1 class="home-title">
+      <span class="home-title__line1">Jornades</span>
+      <span class="home-title__line2">d'Artesania</span>
+    </h1>
+  </div>
 
-      <div class="poster-cell poster-date">
-        <div class="poster-date__content">
-          <p class="poster-date__label">Quan</p>
-          <p class="poster-date__value">15–17<br/>Oct</p>
-          <p class="poster-date__year">2026</p>
-        </div>
-      </div>
+  <div class="home-date-overlay">
+    <p class="home-date">12 — 15 Juny 2026<br>Barcelona</p>
+  </div>
 
-      <div class="poster-cell poster-location">
-        <div class="poster-location__content">
-          <i class="fa-solid fa-location-dot"></i>
-          <p>Centre Cívic<br/>La Verneda</p>
-        </div>
-      </div>
+<section class="home-info">
+  <div class="site-container home-info__inner">
+    <p class="home-description">
+      Vint-i-cinc anys celebrant l'art de la mà,
+      la memòria dels materials i la poesia de la creació artesana.
+    </p>
+    <a href="contacte.html" class="home-cta">Inscriu-te ara</a>
+  </div>
+</section>
 
-      <div class="poster-cell poster-tagline">
-        <blockquote class="poster-quote">
-          "Recuperem els oficis,<br>construïm el futur."
-        </blockquote>
-      </div>
-
-      <div class="poster-cell poster-links">
-        <p class="poster-links__title">Explora les jornades</p>
-        <nav class="poster-nav-links">
-          <a href="./ponents.html" class="poster-link">
-            <i class="fa-solid fa-microphone"></i>
-            <span>Ponents</span>
-          </a>
-          <a href="./article.html" class="poster-link">
-            <i class="fa-solid fa-book-open"></i>
-            <span>Informació</span>
-          </a>
-          <a href="./contacte.html" class="poster-link">
-            <i class="fa-solid fa-envelope"></i>
-            <span>Contacte</span>
-          </a>
-        </nav>
-      </div>
-
-      <div class="poster-cell poster-decoration">
-        <div class="poster-deco-pattern"></div>
-      </div>
-
-      <div class="poster-cell poster-badge">
-        <div class="poster-badge__inner">
-          <p class="poster-badge__text">Entrada<br/>lliure</p>
-        </div>
-      </div>
-
-    </div>
-  </main>
+</main>
   
   <include src="views/footer.html"></include>
 

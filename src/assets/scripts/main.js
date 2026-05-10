@@ -1,4 +1,4 @@
-import 'bootstrap';
+import * as bootstrap from 'bootstrap';
 import '@fortawesome/fontawesome-free/css/all.css';
 
 import '@fontsource/playfair-display/400.css';

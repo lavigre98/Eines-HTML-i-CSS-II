@@ -6,174 +6,218 @@
   <title>Contacte – Jornades d'Artesania</title>
   <link rel="stylesheet" href="./assets/styles/main.scss" />
 </head>
+
 <body class="page-contact">
 
-<include src="views/navbar.html"></include>
+  <include src="views/navbar.html"></include>
 
   <!-- PAGE HEADER -->
-  <header class="page-header page-header--contact">
-    <div class="container">
-      <h1 class="page-header__title">Contacte</h1>
-      <p class="page-header__subtitle">Escriu-nos i t'respondrem el més aviat possible</p>
+  <header class="contact-header">
+    <div class="contact-header__inner site-container">
+      <p class="contact-header__edition">XXV Edició · 2026</p>
+      <h1 class="contact-header__title">Contacte</h1>
     </div>
   </header>
 
   <!-- CONTACT MAIN -->
-  <main class="contact-main">
-    <div class="container">
-      <div class="contact-layout">
+  <main class="contact-main site-container">
 
-        <!-- CONTACT INFO CARDS -->
-        <section class="contact-info">
-          <h2 class="visually-hidden">Informació de contacte</h2>
+    <!-- LEFT SIDEBAR -->
+    <aside class="contact-sidebar">
 
-          <div class="info-cards">
-            <div class="info-card">
-              <div class="info-card__icon">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <div class="info-card__content">
-                <h3>Adreça</h3>
-                <p>Centre Cívic La Verneda<br/>Carrer Binèfar, 4<br/>08020 Barcelona</p>
-              </div>
-            </div>
+      <div class="contact-sidebar__block">
+        <span class="contact-sidebar__label">L'Esdeveniment</span>
+        <p class="contact-sidebar__title">
+          Jornades d'Artesania<br />
+          Barcelona, 15–17 Febrer 2026
+        </p>
+      </div>
 
-            <div class="info-card">
-              <div class="info-card__icon">
-                <i class="fa-solid fa-clock"></i>
-              </div>
-              <div class="info-card__content">
-                <h3>Horaris</h3>
-                <p>Divendres 15: 17h – 21h<br/>Dissabte 16: 10h – 20h<br/>Diumenge 17: 10h – 18h</p>
-              </div>
-            </div>
+      <hr class="contact-sidebar__divider" />
 
-            <div class="info-card">
-              <div class="info-card__icon">
-                <i class="fa-solid fa-envelope"></i>
-              </div>
-              <div class="info-card__content">
-                <h3>Correu</h3>
-                <p><a href="mailto:info@jornadesartesania.cat">info@jornadesartesania.cat</a></p>
-              </div>
-            </div>
+      <div class="contact-sidebar__block">
+        <span class="contact-sidebar__label">Ubicació</span>
+        <p class="contact-sidebar__body">
+          Centre Cívic La Verneda<br />
+          Carrer Binèfar, 4<br />
+          08020 Barcelona
+        </p>
+      </div>
 
-            <div class="info-card">
-              <div class="info-card__icon">
-                <i class="fa-brands fa-instagram"></i>
-              </div>
-              <div class="info-card__content">
-                <h3>Xarxes socials</h3>
-                <p><a href="#">@jornadesartesania</a></p>
-              </div>
-            </div>
+      <div class="contact-sidebar__block">
+        <span class="contact-sidebar__label">Horaris</span>
+        <p class="contact-sidebar__body">
+          Divendres 15: 17h – 21h<br />
+          Dissabte 16: 10h – 20h<br />
+          Diumenge 17: 10h – 18h
+        </p>
+      </div>
+
+      <div class="contact-sidebar__block">
+        <span class="contact-sidebar__label">Preu</span>
+        <p class="contact-sidebar__body">
+          Entrada lliure<br />
+          Tallers: 25 – 45 €/persona
+        </p>
+      </div>
+
+      <hr class="contact-sidebar__divider" />
+
+      <div class="contact-sidebar__block">
+        <span class="contact-sidebar__label">Consultes</span>
+        <p class="contact-sidebar__body">
+          <a href="mailto:info@jornadesartesania.cat">info@jornadesartesania.cat</a><br />
+          <a href="#">@jornadesartesania</a>
+        </p>
+      </div>
+
+    </aside>
+
+    <!-- RIGHT FORM PANEL -->
+    <section class="contact-form-panel">
+      <p class="contact-form-panel__heading">Envia'ns un missatge</p>
+
+      <form class="contact-form" name="contacte" method="POST" data-netlify="true" novalidate>
+        <input type="hidden" name="form-name" value="contacte" />
+
+        <!-- Nom + Email -->
+        <div class="contact-form__row">
+          <div class="contact-field">
+            <label for="nom" class="contact-field__label">
+              Nom complet <span class="contact-field__req">*</span>
+            </label>
+            <input
+              type="text"
+              id="nom"
+              name="nom"
+              class="contact-field__input"
+              placeholder="El teu nom"
+              required
+            />
           </div>
-        </section>
 
-        <!-- CONTACT FORM -->
-        <section class="contact-form-section">
-          <h2>Envia'ns un missatge</h2>
+          <div class="contact-field">
+            <label for="email" class="contact-field__label">
+              Correu electrònic <span class="contact-field__req">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="contact-field__input"
+              placeholder="correu@exemple.com"
+              required
+            />
+          </div>
+        </div>
 
-          <!-- Bootstrap modal trigger -->
-          <div class="mb-4">
-            <button type="button" class="btn btn-outline-craft btn-sm" data-bs-toggle="modal" data-bs-target="#infoModal">
-              <i class="fa-solid fa-circle-info me-1"></i>Informació sobre inscripcions als tallers
+        <!-- Tema — targetes clickables -->
+        <div class="contact-tema">
+          <p class="contact-field__label">
+            Tema de consulta <span class="contact-field__req">*</span>
+          </p>
+
+          <div class="contact-tema__grid">
+            <button
+              type="button"
+              class="tema-card"
+              data-value="inscripcio"
+              onclick="selectTema(this)"
+            >
+              <span class="tema-card__name">Inscripció a Tallers</span>
+              <span class="tema-card__meta">Places limitades · Gratuït</span>
+            </button>
+
+            <button
+              type="button"
+              class="tema-card"
+              data-value="informacio"
+              onclick="selectTema(this)"
+            >
+              <span class="tema-card__name">Informació General</span>
+              <span class="tema-card__meta">Programació · Horaris</span>
+            </button>
+
+            <button
+              type="button"
+              class="tema-card"
+              data-value="premsa"
+              onclick="selectTema(this)"
+            >
+              <span class="tema-card__name">Premsa i Comunicació</span>
+              <span class="tema-card__meta">Acreditacions · Notes</span>
+            </button>
+
+            <button
+              type="button"
+              class="tema-card"
+              data-value="col·laboracio"
+              onclick="selectTema(this)"
+            >
+              <span class="tema-card__name">Col·laboració</span>
+              <span class="tema-card__meta">Artesans · Patrocinadors</span>
             </button>
           </div>
 
-          <div class="contact-form-wrap">
-            <!-- NOTE: Using netlify-style form attributes for Netlify Forms integration -->
-            <form class="contact-form" name="contacte" method="POST" data-netlify="true" novalidate>
-              <input type="hidden" name="form-name" value="contacte" />
-
-              <div class="form-group">
-                <label for="nom" class="form-label">Nom complet <span class="required">*</span></label>
-                <input type="text" id="nom" name="nom" class="form-control" placeholder="El teu nom i cognoms" required />
-              </div>
-
-              <div class="form-group">
-                <label for="email" class="form-label">Correu electrònic <span class="required">*</span></label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="el-teu@correu.cat" required />
-              </div>
-
-              <div class="form-group">
-                <label for="tema" class="form-label">Tema de consulta</label>
-                <select id="tema" name="tema" class="form-select">
-                  <option value="">Selecciona un tema...</option>
-                  <option value="inscripcio">Inscripció a tallers</option>
-                  <option value="informacio">Informació general</option>
-                  <option value="premsa">Premsa i comunicació</option>
-                  <option value="col·laboracio">Col·laboració</option>
-                  <option value="altres">Altres consultes</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="missatge" class="form-label">Missatge <span class="required">*</span></label>
-                <textarea id="missatge" name="missatge" class="form-control" rows="6" placeholder="Escriu aquí el teu missatge..." required></textarea>
-              </div>
-
-              <div class="form-check mb-4">
-                <input type="checkbox" id="privacitat" name="privacitat" class="form-check-input" required />
-                <label for="privacitat" class="form-check-label">
-                  Accepto la <a href="#" class="link-craft">política de privacitat</a> i el tractament de les meves dades per gestionar la consulta.
-                </label>
-              </div>
-
-              <button type="submit" class="btn btn-craft btn-lg w-100">
-                <i class="fa-solid fa-paper-plane me-2"></i>Enviar missatge
-              </button>
-            </form>
-          </div>
-        </section>
-
-      </div><!-- /contact-layout -->
-
-      <!-- MAP PLACEHOLDER -->
-      <div class="map-placeholder mt-5">
-        <div class="map-placeholder__inner">
-          <i class="fa-solid fa-map-location-dot"></i>
-          <p>Centre Cívic La Verneda · Carrer Binèfar, 4 · Barcelona</p>
-          <a href="https://maps.google.com/?q=Carrer+Binefar+4+Barcelona" target="_blank" rel="noopener" class="btn btn-outline-craft btn-sm">
-            <i class="fa-solid fa-external-link me-1"></i>Obrir al mapa
-          </a>
+          <input type="hidden" id="tema" name="tema" value="" />
         </div>
-      </div>
 
-    </div><!-- /container -->
-  </main>
+        <!-- Missatge -->
+        <div class="contact-field">
+          <label for="missatge" class="contact-field__label">Missatge o preguntes</label>
+          <textarea
+            id="missatge"
+            name="missatge"
+            class="contact-field__input contact-field__textarea"
+            placeholder="Digues-nos si tens alguna necessitat especial, experiència prèvia o qualsevol dubte..."
+          ></textarea>
+        </div>
 
-  <!-- Bootstrap Modal -->
-  <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content modal-craft">
-        <div class="modal-header">
-          <h5 class="modal-title" id="infoModalLabel">
-            <i class="fa-solid fa-scissors me-2"></i>Inscripció als Tallers
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tanca"></button>
+        <!-- Privacitat -->
+        <div class="contact-privacy">
+          <input
+            type="checkbox"
+            id="privacitat"
+            name="privacitat"
+            class="contact-privacy__check"
+            required
+          />
+
+          <label for="privacitat" class="contact-privacy__label">
+            Accepto la <a href="#" class="link-craft">política de privacitat</a>
+            i el tractament de les meves dades per gestionar la consulta.
+          </label>
         </div>
-        <div class="modal-body">
-          <p>Els tallers de les Jornades d'Artesania 2026 són <strong>gratuïts</strong> però cal inscripció prèvia per garantir places.</p>
-          <ul>
-            <li>Taller de Ceràmica — màxim 12 persones</li>
-            <li>Taller de Tèxtil — màxim 15 persones</li>
-            <li>Taller de Fusteria — màxim 10 persones</li>
-            <li>Taller de Vitrall — màxim 8 persones</li>
-          </ul>
-          <p>Especifica el taller al qual vols assistir al camp de missatge del formulari de contacte.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tanca</button>
-          <button type="button" class="btn btn-craft" data-bs-dismiss="modal">
-            D'acord, aniré al formulari
+
+        <!-- Submit -->
+        <div class="contact-submit">
+          <button type="submit" class="btn btn-craft contact-submit__btn">
+            Enviar missatge
           </button>
+
+          <p class="contact-submit__note">
+            Rebràs confirmació per correu<br />
+            en menys de 48 hores.
+          </p>
         </div>
-      </div>
-    </div>
-  </div>
+
+      </form>
+    </section>
+
+ 
+  </main>
 
   <include src="views/footer.html"></include>
 
-<script type="module" src="assets/scripts/main.js"></script></body>
+  <script type="module" src="assets/scripts/main.js"></script>
+
+  <script>
+    function selectTema(el) {
+      document.querySelectorAll('.tema-card').forEach(c => c.classList.remove('tema-card--selected'));
+      el.classList.add('tema-card--selected');
+      document.getElementById('tema').value = el.dataset.value;
+    }
+  </script>
+
+</body>
 </html>
