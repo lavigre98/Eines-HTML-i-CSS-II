@@ -1,10 +1,13 @@
 @layer layout {
 
-  //Ombra baix del navbar.
+  // Navbar principal: color propi i ombra inferior.
   .navbar-custom {
+    background-color: var(--color-primary);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
   }
 
+  // Contenidor intern del navbar.
+  // Manté el mateix ample que la resta del contingut de la pàgina.
   .navbar-custom .site-container {
     width: min(100% - 2rem, 1200px);
     margin-inline: auto;
@@ -14,38 +17,47 @@
     justify-content: space-between;
   }
 
-  //Icona i el text “Artesania” estiguen alineats horitzontalment i amb separació.
-  .brand-logo {
+  // Logo i text “Artesania”.
+  // Es fa més específic amb .navbar-custom 
+  .navbar-custom .brand-logo {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-family: var(--font-display);
     font-size: 1.3rem;
     font-weight: 700;
-    color: var(--color-accent-light) !important;
+    color: var(--color-accent-light);
     letter-spacing: 0.02em;
     text-decoration: none;
 
     i {
       color: var(--color-accent);
     }
+
+    &:hover,
+    &:focus {
+      color: var(--color-white);
+    }
   }
 
-  //Personalitza els enllaços del menú.
+  // Enllaços del menú de navegació.
+  // El selector .navbar-custom .nav-link té més context que .nav-link de Bootstrap.
   .navbar-custom .nav-link {
-    color: var(--color-accent-light) !important;
+    color: var(--color-accent-light);
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    transition: color var(--transition-fast);
-    padding: 0.5rem 0.75rem !important;
+    padding: 0.5rem 0.75rem;
     border-radius: var(--radius-sm);
+    transition:
+      color var(--transition-fast),
+      background-color var(--transition-fast);
 
-    //Canvi de color
     &:hover,
+    &:focus,
     &.active {
-      color: var(--color-white) !important;
+      color: var(--color-white);
       background-color: rgba(255, 255, 255, 0.1);
     }
   }

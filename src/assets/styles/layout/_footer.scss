@@ -6,6 +6,7 @@
 
 @layer layout {
 
+  // Franja superior de contacte: adreça, correu i telèfon.
   .footer-contact {
     width: 100%;
     padding: var(--space-sm) 0;
@@ -37,20 +38,24 @@
         text-underline-offset: 3px;
         transition: opacity var(--transition-fast);
 
-        &:hover {
+        &:hover,
+        &:focus {
           opacity: 0.75;
         }
       }
     }
   }
 
+  // Footer principal.
+  // Es declara com a contenidor per poder aplicar container queries.
   .site-footer {
     background-color: var(--color-bg-alt);
     container-type: inline-size;
     container-name: site-footer;
   }
 
-  .footer-top {
+  // Part superior del footer: logo, menú i xarxes.
+  .site-footer .footer-top {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -61,11 +66,31 @@
     border-bottom: 1px solid var(--color-border);
   }
 
-  .footer-brand .brand-logo {
-    color: var(--color-primary) !important;
+  // Logo del footer.
+  // Es fa més específic per sobreescriure l'estil general de .brand-logo
+  .site-footer .footer-brand .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+
+    i {
+      color: var(--color-primary-light);
+    }
+
+    &:hover,
+    &:focus {
+      color: var(--color-primary-light);
+    }
   }
 
-  .footer-nav {
+  // Navegació del footer.
+  .site-footer .footer-nav {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
@@ -74,15 +99,18 @@
       color: var(--color-text-muted);
       font-size: 0.875rem;
       font-weight: 600;
+      text-decoration: none;
       transition: color var(--transition-fast);
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: var(--color-primary);
       }
     }
   }
 
-  .footer-social {
+  // Icones de xarxes socials.
+  .site-footer .footer-social {
     display: flex;
     gap: 1rem;
 
@@ -96,16 +124,21 @@
       background-color: var(--color-primary);
       color: var(--color-white);
       font-size: 0.8rem;
-      transition: background-color var(--transition-fast);
+      text-decoration: none;
+      transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast);
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--color-primary-light);
         color: var(--color-white);
       }
     }
   }
 
-  .footer-bottom {
+  // Part inferior del footer: copyright.
+  .site-footer .footer-bottom {
     padding: 1rem 0;
     text-align: center;
 
@@ -144,7 +177,7 @@
 
   // -----------------------------------------------------------
   // Container query site-footer
-  // Centra logo, menú i xarxes en pantalles petites
+  // Centra logo, menú i xarxes quan el footer té poc espai
   // -----------------------------------------------------------
 
   @container site-footer (max-width: 600px) {
